@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace snake
+namespace Snake
 {
     class Point
     {
@@ -16,7 +16,7 @@ namespace snake
         {
         }
 
-        public Point (int _x, int _y, char _sym)
+        public Point(int _x, int _y, char _sym)
         {
             x = _x;
             y = _y;
@@ -26,8 +26,7 @@ namespace snake
         public void Draw()
         {
             Console.SetCursorPosition(x, y);
-            Console.WriteLine(sym);
+            Console.Write(sym);
         }
-
     }
 }
