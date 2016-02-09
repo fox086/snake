@@ -21,18 +21,9 @@ namespace snake
             leftLine.Drow();
             rightLine.Drow();
 
-
-            Point p1 = new Point(1,3,'*');
-            p1.Draw();
-
-            Point p2 = new Point(4,5,'#');
-            p2.Draw();
-
-            HorizontalLine hLine = new HorizontalLine(5, 10, 8, '+');
-            hLine.Drow();
-
-            VerticalLine vLine = new VerticalLine(10, 15, 12, '%');
-            vLine.Drow();
+            Point p = new Point(3, 4, '*');
+            Snake snake = new Snake(p, 4, Direction.RIGHT);
+            snake.Drow();
            
             Console.ReadLine();
          }
