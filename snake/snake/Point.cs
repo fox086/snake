@@ -23,7 +23,7 @@ namespace snake
             sym = _sym;
         }
 
-        public Point(Point p)
+        public Point(Point p) // конструктор с помощью которого задаем точки с помощью другой точки
         {
             x = p.x;
             y = p.y;
@@ -36,18 +36,24 @@ namespace snake
             {
                 x = x + offset;
             }
-            else if(direction==Direction.LEFT)
+            else if(direction == Direction.LEFT)
             {
                 x = x - offset;
             }
-            else if(direction==Direction.UP)
+            else if(direction == Direction.UP)
             {
                 y = y + offset;
             }
-            else if(direction==Direction.DOWN)
+            else if(direction == Direction.DOWN)
             {
                 y = y - offset;
             }
+        }
+
+        public void Clear()
+        {
+            sym = ' ';
+            Draw();
         }
 
         public void Draw()
