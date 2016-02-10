@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +8,15 @@ using System.Threading;
 
 namespace snake
 {
-    class Program
+    class Program : GameOver
     {
         static void Main(string[] args)
         {
             Console.SetBufferSize(85, 30);
 
-            Walls walls = new Walls(80, 25);
+            StartGame();
+
+            Walls walls = new Walls(81, 25);
             walls.Draw();
 
             Point p = new Point(3, 4, '*');
@@ -40,7 +44,7 @@ namespace snake
                     snake.Move();
                 }
 
-                Thread.Sleep(110);
+                Thread.Sleep(130);
 
                 if (Console.KeyAvailable)                                //проверяем была ли нажата клавиша с прошлого витка цикла
                 {
@@ -48,6 +52,20 @@ namespace snake
                     snake.HandleKey(key.Key);
                 }
             }
-         }
+            WriteGameOver();
+            Console.ReadLine();
+
+            /*GameOver gameOver = new GameOver();
+            if (Console.KeyAvailable)                                //проверяем была ли нажата клавиша с прошлого витка цикла
+            {
+                ConsoleKeyInfo rkey = Console.ReadKey();             //получаем значение клавиши
+                gameOver.RestartKey(rkey.Key);
+            }
+
+            //Console.ReadLine();*/
+        }
+
+
+        
     }
 }
