@@ -52,5 +52,18 @@ namespace snake
             else if (key == ConsoleKey.DownArrow)
                 direction = Direction.DOWN;
         }
+
+        internal bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))                       //если точка головы совпадает с точкой еды, то будет акт питания
+            {
+                food.sym = head.sym;                    //превращает $ => *
+                pList.Add(food);                        //заносит точку
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }

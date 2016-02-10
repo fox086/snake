@@ -50,6 +50,11 @@ namespace snake
             }
         }
 
+        public bool IsHit(Point p)                              // есть ли пересечение текущей точки с точкой, которая в аргументе
+        {
+            return p.x == this.x && p.y == this.y;
+        }
+
         public void Clear()
         {
             sym = ' ';

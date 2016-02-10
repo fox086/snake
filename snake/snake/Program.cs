@@ -22,18 +22,32 @@ namespace snake
             rightLine.Drow();
 
             Point p = new Point(3, 4, '*');
-            Snake snake = new Snake(p, 8, Direction.RIGHT);
+            Snake snake = new Snake(p, 3, Direction.RIGHT);
             snake.Drow();
+
+            FoodCreator foodCreator = new FoodCreator(80, 25, '$');     //указываем пищу с параметрами
+            Point food = foodCreator.CreateFood();                      //создаем произволно новую точку еды
+            food.Draw();                                                //выводим еду на экран
 
             while(true)                                                 //бесконечный цикл
             {
-                if(Console.KeyAvailable)                                //проверяем была ли нажата клавиша с прошлого витка цикла
+                if(snake.Eat(food))                                     
+                {
+                    food = foodCreator.CreateFood();                    
+                    food.Draw();                                        
+                }
+                else
+                {
+                    snake.Move();
+                }
+
+                Thread.Sleep(110);
+
+                if (Console.KeyAvailable)                                //проверяем была ли нажата клавиша с прошлого витка цикла
                 {
                     ConsoleKeyInfo key = Console.ReadKey();             //получаем значение клавиши
                     snake.HandleKey(key.Key);
                 }
-                Thread.Sleep(110);
-                snake.Move();
             }
          }
     }
