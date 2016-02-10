@@ -22,33 +22,19 @@ namespace snake
             rightLine.Drow();
 
             Point p = new Point(3, 4, '*');
-            Snake snake = new Snake(p, 4, Direction.RIGHT);
+            Snake snake = new Snake(p, 8, Direction.RIGHT);
             snake.Drow();
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
 
-            Console.ReadLine();
+            while(true)                                                 //бесконечный цикл
+            {
+                if(Console.KeyAvailable)                                //проверяем была ли нажата клавиша с прошлого витка цикла
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();             //получаем значение клавиши
+                    snake.HandleKey(key.Key);
+                }
+                Thread.Sleep(110);
+                snake.Move();
+            }
          }
     }
 }
